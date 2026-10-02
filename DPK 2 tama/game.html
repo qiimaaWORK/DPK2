@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tic-Tac-Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        #status {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            background-color: #34495e;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            font-size: 40px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 5px;
+            user-select: none;
+        }
+
+        .cell:hover {
+            background-color: #bdc3c7;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tic-Tac-Toe</h1>
+    <div id="status">Giliran: Pemain X</div>
+
+    <div class="board" id="board">
+        <div class="cell" onclick="klikKotak(this, 0)"></div>
+        <div class="cell" onclick="klikKotak(this, 1)"></div>
+        <div class="cell" onclick="klikKotak(this, 2)"></div>
+        <div class="cell" onclick="klikKotak(this, 3)"></div>
+        <div class="cell" onclick="klikKotak(this, 4)"></div>
+        <div class="cell" onclick="klikKotak(this, 5)"></div>
+        <div class="cell" onclick="klikKotak(this, 6)"></div>
+        <div class="cell" onclick="klikKotak(this, 7)"></div>
+        <div class="cell" onclick="klikKotak(this, 8)"></div>
+    </div>
+
+    <button onclick="resetGame()">Riset / Main Lagi</button>
+
+    <script>
+        let pemandanganPapan = ["", "", "", "", "", "", "", "", ""];
+        let pemainSekarang = "X";
+        let gameAktif = true;
+
+        const kondisiMenang = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Baris
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Kolom
+            [0, 4, 8], [2, 4, 6]             // Diagonal
+        ];
+
+        function klikKotak(elemen, indeks) {
+            if (pemandanganPapan[indeks] !== "" || !gameAktif) return;
+
+            pemandanganPapan[indeks] = pemainSekarang;
+            elemen.innerText = pemainSekarang;
+
+            ceksPemenang();
+        }
+
+        function ceksPemenang() {
+            let adaPemenang = false;
+
+            for (let i = 0; i < kondisiMenang.length; i++) {
+                const [a, b, c] = kondisiMenang[i];
+                if (pemandanganPapan[a] && pemandanganPapan[a] === pemandanganPapan[b] && pemandanganPapan[a] === pemandanganPapan[c]) {
+                    adaPemenang = true;
+                    break;
+                }
+            }
+
+            if (adaPemenang) {
+                document.getElementById("status").innerText = `🎉 Pemain ${pemainSekarang} MENANG!`;
+                gameAktif = false;
+                return;
+            }
+
+            if (!pemandanganPapan.includes("")) {
+                document.getElementById("status").innerText = "🤝 Hasil SERI!";
+                gameAktif = false;
+                return;
+            }
+
+            pemainSekarang = pemainSekarang === "X" ? "O" : "X";
+            document.getElementById("status").innerText = `Giliran: Pemain ${pemainSekarang}`;
+        }
+
+        function resetGame() {
+            pemandanganPapan = ["", "", "", "", "", "", "", "", ""];
+            pemainSekarang = "X";
+            gameAktif = true;
+            document.getElementById("status").innerText = `Giliran: Pemain ${pemainSekarang}`;
+            
+            const semuaKotak = document.querySelectorAll('.cell');
+            semuaKotak.forEach(kotak => kotak.innerText = "");
+        }
+    </script>
+
+</body>
+</html>

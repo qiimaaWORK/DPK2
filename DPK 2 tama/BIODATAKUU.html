@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Biodataku</title>
+</head>
+<body>
+    <form action="form2.html">
+        <fieldset>
+            <legend>Biodataku</legend>
+            <label for="masukantext">Masukkan text :</label>
+            <input name="masukantext" type="text" id="masukantext" maxlength="25"><br><br>
+            
+            <label for="namadepan">Nama Depan :</label>
+            <input name="namadepan" type="text" id="namadepan" maxlength="8"><br><br>
+            
+            <label for="namabelakang">Nama Keluarga :</label>
+            <input name="namabelakang" type="text" id="belakang" maxlength="25"><br><br>
+
+            <table border="0">
+                <tr>
+                    <td><b>Hobby saya:</b></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" id="hobby1" />Membaca</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" id="hobby2" />Menyanyi</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" id="hobby3" />Browsing</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" id="hobby4" />Chatting</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" id="hobby5" />Lain-lain</td>
+                </tr>
+
+                <tr><td>&nbsp;</td></tr>
+
+
+                <tr>
+                    <td><b>Jenis Kelamin:</b></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="jk" id="jk1" value="Laki-laki"/>Laki-laki</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="jk" id="jk2" value="Perempuan"/>Perempuan</td>
+                </tr>
+
+                <tr><td>&nbsp;</td></tr>
+
+
+                <tr>
+                    <td><b>Usia:</b></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="u" id="u1" value="Dewasa"/>Dewasa</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="u" id="u2" value="Anak-anak"/>Anak-anak</td>
+                </tr>
+            </table>
+
+        <br>
+
+        <label for="olahraga"><b>Olahraga yang anda suka:</b></label><br>
+        <select name="olahraga" id="olahraga">
+            <option value="sepakbola" selected>Sepakbola</option>
+            <option value="badminton">Badminton</option>
+            <option value="kasti">Kasti</option>
+        </select>
+        </fieldset>
+
+        <br><br>
+
+        <label for="komen"><b>Komentar:</b></label><br>
+        <textarea name="komen" id="komen" cols="25" rows="4"></textarea>
+
+        <br><br>
+
+        <input type="submit" name="tombol1" id="tombol1" value="OK">
+        <input type="reset" name="tombol2" id="tombol2" value="Reset">
+        <input type="submit" name="tombol3" id="tombol3" value="Submit">
+        
+    </form>
+</body>
+</html>
